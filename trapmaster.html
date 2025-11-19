@@ -45,6 +45,30 @@
 		height: 500px;
 		width: 500px
 	}
+	.splash-img {
+		max-width: min(80vw, 500px);
+		max-height: min(80vh, 500px);
+		width: auto;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+		object-fit: contain;
+	}
+	#status {
+		position: fixed;          /* 蓋在畫面上 */
+		inset: 0;                 /* top:0; right:0; bottom:0; left:0; 的縮寫 */
+		display: flex;
+		flex-direction: column;   /* 圖片 + 進度條 垂直排列 */
+		align-items: center;      /* 水平置中 */
+		justify-content: center;  /* 垂直置中 */
+		pointer-events: none;     /* 讓下面 canvas 仍可接收滑鼠事件（如果你想要） */
+		z-index: 10;              /* 確保在最上層 */
+	}
+
+	#status-progress,
+	#status-notice {
+		pointer-events: auto;     /* 如果你有要互動可以開回來 */
+	}
   </style>
 </head>
 <body>
@@ -57,7 +81,7 @@
 		</noscript>
 
 		<div id="status">
-			<img id="status-splash fix-size" class="show-image--true fullsize--true use-filter--true" src="trapmaster.png" alt="">
+			<img id="status-splash" class="splash-img" src="trapmaster.png" alt="">
 			<progress id="status-progress"></progress>
 			<div id="status-notice"></div>
 		</div>
